@@ -31,15 +31,12 @@
         </ul>
         {% if user.is_authenticated %}
             <div style="color: white; margin-right: 1%">
-                <a>Пользователь: {{ user.username }}</a>
-                {% block email %}
-
-                {% endblock %}
+                <a>User: {{ user.username }}</a>
             </div>
             <div>
                 <form action="{#  #}" method="post">
                     {% csrf_token %}
-                    <input type="submit" class="btn btn-light" value="Выйти">
+                    <input type="submit" class="btn btn-light" value="Log out">
                 </form>
             </div>
         {% else %}
