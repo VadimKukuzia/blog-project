@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
@@ -37,8 +38,11 @@ def log_in(request):
 
 
 def log_out(request):
-    if request.method == 'POST':
-        logout(request)
-        messages.info(request, 'You have been successfully logged out')
-        return redirect('index')
+    logout(request)
+    messages.info(request, 'You have been successfully logged out')
     return redirect('index')
+
+
+@login_required(login_url='log-in')
+def profile(request):
+    return render(request, 'user/profile.html')

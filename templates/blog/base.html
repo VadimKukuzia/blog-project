@@ -29,15 +29,9 @@
             {% endif %}
         </ul>
         {% if user.is_authenticated %}
-            <div style="color: white; margin-right: 1%">
-                <a>User: {{ user.username }}</a>
-            </div>
-            <div>
-                <form action="{% url 'log-out' %}" method="post">
-                    {% csrf_token %}
-                    <input type="submit" class="btn btn-light" value="Log out">
-                </form>
-            </div>
+            <a style="color:white; margin-right: 0.3%;">User: {{ user.username }}</a><br>
+            <a class="btn btn-light" href="{% url 'profile' %}" style="margin-right: 0.3%; min-width: max-content;">Profile</a>
+            <a class="btn btn-light" href="{% url 'log-out' %}" style="min-width: max-content;">Logout</a>
         {% else %}
             <div class="nav justify-content-end ">
                 <div class="navbar-item mr-auto" style="display: flex">

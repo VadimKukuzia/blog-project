@@ -17,6 +17,7 @@ media
 my_project/staticfiles/
 staticfiles
 
+profile_pics
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
 *.py[cod]
