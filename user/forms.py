@@ -3,6 +3,8 @@ from django.contrib.auth import password_validation
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
 
+from user.models import Profile
+
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(label='Email', max_length=254, help_text='Required. Enter the valid email.',
@@ -22,3 +24,24 @@ class UserRegisterForm(UserCreationForm):
         if user_count > 0:
             raise forms.ValidationError('A user with that email already exists.')
         return email
+
+
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField(label='Email')
+
+    class Meta:
+        model = User
+        fields = ('username', 'email')
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        if not any(i in email for i in ('.ru', '.com', '.ua', '.net')):
+            raise forms.ValidationError('Enter the valid email')
+        return email
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('image',)

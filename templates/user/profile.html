@@ -1,4 +1,6 @@
 {% extends 'blog/base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
 
 {% block title %}
 Profile
@@ -17,7 +19,7 @@ Profile
         <div class="row">
             <div class="col-md-auto">
                 <div class="row-fluid">
-                    <img class="img-fluid img-thumbnail" src="{{ user.profile.image.url }}" alt="Profile_image" height="300" width="300">
+                    <img class="img-fluid img-thumbnail" src="{{ user.profile.image.url }}" alt="Profile_image" height="250" width="250">
                 </div>
             </div>
             <div class="col-md-auto">
@@ -27,8 +29,26 @@ Profile
                 <div class="row-fluid">
                     <div class="h5" style="word-break: break-word"><strong><em>Email</em></strong>: {{ user.email }}</div>
                 </div>
+                <div class="row-fluid">
+                </div>
+            </div>
+            <div class="col" style="margin-top: 1%">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Updating the profile</h5>
+                            </div>
+                            <div class="modal-body">
+                                {{ user_update_form|crispy }}
+                                {{ profile_update_form|crispy }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                    </form>
             </div>
         </div>
     </div>
-
 {% endblock %}
