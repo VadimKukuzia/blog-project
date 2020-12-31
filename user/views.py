@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from user.forms import UserRegisterForm, UserLoginForm
+from user.forms import UserRegisterForm
 
 
 def register(request):
@@ -21,7 +21,7 @@ def register(request):
 
 def log_in(request):
     if request.method == 'POST':
-        form = UserLoginForm(request.POST, data=request.POST)
+        form = AuthenticationForm(request.POST, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
@@ -31,7 +31,7 @@ def log_in(request):
             messages.info(request, 'Username or password don`t match')
             return render(request, 'user/login.html', {'form': form})
     else:
-        form = UserLoginForm()
+        form = AuthenticationForm()
 
     return render(request, 'user/login.html', {'form': form})
 
