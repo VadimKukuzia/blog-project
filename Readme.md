@@ -1,3 +1,3 @@
 ## Blog
-Home project
+## Pet project
 #### Python Django
