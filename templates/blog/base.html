@@ -30,6 +30,7 @@
         </ul>
         {% if user.is_authenticated %}
             <a style="color:white; margin-right: 0.3%;">User: {{ user.username }}</a><br>
+            <a class="btn btn-light" href="{% url 'post-create' %}" style="margin-right: 0.3%; min-width: max-content;">New Post</a>
             <a class="btn btn-light" href="{% url 'profile' %}" style="margin-right: 0.3%; min-width: max-content;">Profile</a>
             <a class="btn btn-light" href="{% url 'log-out' %}" style="min-width: max-content;">Logout</a>
         {% else %}

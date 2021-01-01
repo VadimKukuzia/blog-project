@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Post deleting
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="margin-top: 10px; border-radius: 5px; border: 1px solid grey; padding: 10px;">
+        <form method="post">
+            {% csrf_token %}
+            <legend class="border-bottom mb-4">Delete Post</legend>
+            <div class="h2">Are you sure you want to delete the post "{{ post.title }}"</div>
+            <div class="row justify-content-center">
+                <div class="col-sm-auto">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <a class="btn btn-secondary" href="{% url 'post-detail' post.id %}">Cancel</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}

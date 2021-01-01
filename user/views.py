@@ -26,10 +26,10 @@ def log_in(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            messages.info(request, f'Hello, {user.username}')
+            messages.success(request, f'Hello, {user.username}')
             return redirect('index')
         else:
-            messages.info(request, 'Username or password don`t match')
+            messages.warning(request, 'Username or password don`t match')
             return render(request, 'user/login.html', {'form': form})
     else:
         form = AuthenticationForm()
@@ -39,7 +39,7 @@ def log_in(request):
 
 def log_out(request):
     logout(request)
-    messages.info(request, 'You have been successfully logged out')
+    messages.success(request, 'You have been successfully logged out')
     return redirect('index')
 
 

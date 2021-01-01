@@ -4,18 +4,16 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-Register
+Post creating
 {% endblock %}
 
 {% block content %}
     <div class="container" style="margin-top: 10px; border-radius: 5px; border: 1px solid grey; padding: 10px;">
         <form method="post">
             {% csrf_token %}
-            <legend class="border-bottom mb-4">User registration</legend>
+            <legend class="border-bottom mb-4">Blog Post</legend>
             {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary">Post</button>
         </form>
-    <a>Already have an account?</a>
-    <a href="{% url 'log-in' %}">Login</a>
     </div>
 {% endblock %}

@@ -5,9 +5,9 @@ Homepage
 
 {% block messages %}
     {% for message in messages %}
-        <div class="alert alert-success" role="alert">
-            {{ message }}
-        </div>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success" role="alert">{{ message }}</div>
+        {% endif %}
     {% endfor %}
 {% endblock %}
 
@@ -18,7 +18,7 @@ Homepage
                 <div class="col-md-auto">
                     <img class="rounded-circle" src="{{ post.author.profile.image.url }}" style="height: 50px;width: 50px;margin-right: 16px;">
                     <i>Author:</i>
-                    <a href="#">{{ post.author }}</a>
+                    <a>{{ post.author }}</a>
                 </div>
                 <div class="col-md-auto">
                     <small class="text-muted">{{ post.post_date|date:"F d, Y" }}</small>
@@ -26,7 +26,7 @@ Homepage
             </div>
             <div class="row justify-content-center">
                 <div class="col-sm-auto">
-                    <h2><a href="#">{{ post.title }}</a></h2>
+                    <h2><a href="{% url 'post-detail' post.id %}" style="color: #444444">{{ post.title }}</a></h2>
                 </div>
             </div>
             <div class="row">
