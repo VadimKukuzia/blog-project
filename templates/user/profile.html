@@ -30,24 +30,36 @@ Profile
                     <div class="h5" style="word-break: break-word"><strong><em>Email</em></strong>: {{ user.email }}</div>
                 </div>
                 <div class="row-fluid">
+                     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#update_profile"
+                             aria-expanded="false" aria-controls="update_profile">
+                        Update profile
+                     </button>
                 </div>
             </div>
             <div class="col" style="margin-top: 1%">
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Updating the profile</h5>
-                            </div>
-                            <div class="modal-body">
-                                {{ user_update_form|crispy }}
-                                {{ profile_update_form|crispy }}
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </div>
+                {% if profile_update_form.errors or user_update_form.errors %}
+                    <div class="collapse show" id="update_profile">
+                    {% else %}
+                    <div class="collapse" id="update_profile">
+                {% endif %}
+                        <div class="card card-body">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Updating the profile</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{ user_update_form|crispy }}
+                                        {{ profile_update_form|crispy }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
             </div>
         </div>
     </div>
