@@ -18,7 +18,16 @@ Homepage
                 <div class="col-md-auto">
                     <img class="rounded-circle" src="{{ post.author.profile.image.url }}" style="height: 50px;width: 50px;margin-right: 16px;">
                     <i>Author:</i>
-                    <a>{{ post.author }}</a>
+                    {% if post.author == user %}
+                        <a href="{% url 'profile' %}">
+                            {{ post.author }}
+                        </a>
+                        (You)
+                    {% else %}
+                        <a href="{% url 'user-profile' post.author.id %}">
+                            {{ post.author }}
+                        </a>
+                    {% endif %}
                 </div>
                 <div class="col-md-auto">
                     <small class="text-muted">{{ post.post_date|date:"F d, Y" }}</small>

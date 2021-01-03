@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -64,3 +65,11 @@ def profile(request):
         'profile_update_form': profile_update_form
     }
     return render(request, 'user/profile.html', context)
+
+
+@login_required(login_url='log-in')
+def user_profile(request, pk):
+    context = {
+        'profile_user': User.objects.get(pk=pk)
+    }
+    return render(request, 'user/user_profile.html', context)
