@@ -29,6 +29,11 @@ Profile
                 <div class="row-fluid">
                     <div class="h5" style="word-break: break-word"><strong><em>Email</em></strong>: {{ user.email }}</div>
                 </div>
+                <div class="row-fluid" style="margin-bottom: 8px">
+                     <a class="btn btn-outline-primary" href="{% url 'user-posts' user.username %}">
+                        Posts
+                     </a>
+                </div>
                 <div class="row-fluid">
                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#update_profile"
                              aria-expanded="false" aria-controls="update_profile">
