@@ -1,3 +1,3 @@
 ## Blog
-## Pet project
+### Pet project
 #### Python Django
