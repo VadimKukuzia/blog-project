@@ -68,8 +68,8 @@ def profile(request):
 
 
 @login_required(login_url='log-in')
-def user_profile(request, pk):
+def user_profile(request, username):
     context = {
-        'profile_user': User.objects.get(pk=pk)
+        'profile_user': User.objects.get(username=username)
     }
     return render(request, 'user/user_profile.html', context)
