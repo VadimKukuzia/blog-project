@@ -35,7 +35,9 @@ Homepage
             </div>
             <div class="row justify-content-center">
                 <div class="col-sm-auto">
-                    <h2><a href="{% url 'post-detail' post.id %}" style="color: #444444">{{ post.title }}</a></h2>
+                    <div class="h2" style="text-align: center">
+                        <a href="{% url 'post-detail' post.id %}" style="color: #444444; word-break: break-word">{{ post.title }}</a>
+                    </div>
                 </div>
             </div>
             <div class="row">
