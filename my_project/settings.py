@@ -132,7 +132,7 @@ CKEDITOR_CONFIGS = {
         'toolbar_Full': [
             ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-',
              'RemoveFormat'],
-            ['Image', 'HorizontalRule'],
+            ['HorizontalRule'],
             ['TextColor', 'BGColor'],
             ['Smiley', 'sourcearea', 'SpecialChar'],
             ['Link', 'Unlink'],
