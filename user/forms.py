@@ -27,7 +27,8 @@ class UserRegisterForm(UserCreationForm):
 
 
 class UserUpdateForm(forms.ModelForm):
-    email = forms.EmailField(label='Email')
+    email = forms.EmailField(label='Email', max_length=254, help_text='Required. Enter the valid email.',
+                             required=True)
 
     class Meta:
         model = User
@@ -35,9 +36,15 @@ class UserUpdateForm(forms.ModelForm):
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
+        user_count = User.objects.filter(email=email).count()
 
         if not any(i in email for i in ('.ru', '.com', '.ua', '.net')):
             raise forms.ValidationError('Enter the valid email')
+
+        if user_count > 0:
+            user = User.objects.filter(email=email).first()
+            if user.username != self.cleaned_data.get('username'):
+                raise forms.ValidationError('A user with that email already exists.')
         return email
 
 
