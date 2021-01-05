@@ -1,7 +1,7 @@
 from django import forms
-from django.contrib.auth import password_validation
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
+from django.contrib.auth.forms import UserCreationForm
+from django.forms.utils import ErrorList
 
 from user.models import Profile
 
@@ -41,9 +41,8 @@ class UserUpdateForm(forms.ModelForm):
         if not any(i in email for i in ('.ru', '.com', '.ua', '.net')):
             raise forms.ValidationError('Enter the valid email')
 
-        if user_count > 0:
-            user = User.objects.filter(email=email).first()
-            if user.username != self.cleaned_data.get('username'):
+        if self.instance.email != self.cleaned_data.get('email'):
+            if user_count > 0:
                 raise forms.ValidationError('A user with that email already exists.')
         return email
 

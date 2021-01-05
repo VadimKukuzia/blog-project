@@ -46,6 +46,7 @@ def log_out(request):
 
 @login_required(login_url='log-in')
 def profile(request):
+    username = request.user.username
     if request.method == 'POST':
         user_update_form = UserUpdateForm(request.POST, instance=request.user)
         profile_update_form = ProfileUpdateForm(request.POST,
@@ -62,7 +63,8 @@ def profile(request):
 
     context = {
         'user_update_form': user_update_form,
-        'profile_update_form': profile_update_form
+        'profile_update_form': profile_update_form,
+        'username': username
     }
     return render(request, 'user/profile.html', context)
 

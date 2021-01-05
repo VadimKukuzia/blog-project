@@ -5,13 +5,6 @@ from .models import *
 # Create your views here.
 
 
-def index(request):
-    context = {
-        'posts': Post.objects.all()
-    }
-    return render(request, 'blog/post_list.html', context)
-
-
 class PostListView(ListView):
     model = Post
     context_object_name = 'posts'
