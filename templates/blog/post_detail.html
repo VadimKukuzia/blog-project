@@ -39,7 +39,7 @@ Post:{{ post.title }}
         </div>
         <div class="row justify-content-start">
             <div class="col-lg-auto">
-                <p style="word-break: break-word">{{ post.content }}</p>
+                <p style="word-break: break-word">{{ post.content|safe }}</p>
             </div>
         </div>
         {% if post.author == user %}

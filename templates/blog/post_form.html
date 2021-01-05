@@ -12,6 +12,7 @@ Post creating
         <form method="post">
             {% csrf_token %}
             <legend class="border-bottom mb-4">Blog Post</legend>
+            {{ form.media }}
             {{ form|crispy }}
             <button type="submit" class="btn btn-primary">Post</button>
         </form>
