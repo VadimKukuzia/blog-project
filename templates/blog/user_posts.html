@@ -33,7 +33,16 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <p style="word-break: break-word">{{ post.content|safe }}</p>
+                    {% if post.content|length > 1000%}
+                        <p style="word-break: break-word">
+                            {{ post.content|safe|truncatewords:100 }}
+                            <a href="{% url 'post-detail' post.id %}">(Read more...)</a>
+                        </p>
+                    {% else %}
+                        <p style="word-break: break-word">
+                            {{ post.content|safe }}
+                        </p>
+                    {% endif %}
                 </div>
             </div>
         </div>
