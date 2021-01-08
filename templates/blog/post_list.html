@@ -16,7 +16,7 @@ Homepage
         <div class="container" style="margin-top: 10px; border-radius: 5px; border: 1px solid grey; padding: 10px;">
             <div class="row justify-content-between" style="border-bottom: 1px solid grey; padding: 1px; margin-left: 1px; margin-right: 1px">
                 <div class="col-md-auto">
-                    <img class="rounded-circle" src="{{ post.author.profile.image.url }}" style="height: 50px;width: 50px;margin-right: 16px;">
+                    <img alt="Profile_image" class="rounded-circle" src="{{ post.author.profile.image.url }}" style="height: 50px;width: 50px;margin-right: 16px;">
                     <i>Author:</i>
                     {% if post.author == user %}
                         <a href="{% url 'profile' %}">
